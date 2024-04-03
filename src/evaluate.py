@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics import r2_score
 import sys
+import json
 
 def main():
     in_path = sys.argv[1]
@@ -22,6 +23,10 @@ def main():
     with open('data/R2_score.txt','w') as f:
         for score in scores:
             f.write(str(score)+' ')
+
+    with open('data/metrics.json','w') as f:
+        for score in scores:
+            json.dump({'r2_score': score}, f)
 
 if __name__ == '__main__':
     main()
