@@ -24,3 +24,13 @@ stages:
     - src/process.py
     outs:
     - data/predictedTruth.csv
+  evaluate:
+    cmd: python src/evaluate.py data/groundTruth.csv data/predictedTruth.csv
+    deps:
+    - data/groundTruth.csv
+    - data/predictedTruth.csv
+    - src/evaluate.py
+    outs:
+    - data/R2_score.txt
+    metrics:
+    - data/metrics.json
