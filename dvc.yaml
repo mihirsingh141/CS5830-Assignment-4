@@ -8,3 +8,12 @@ stages:
     - download.year
     outs:
     - data/weather.csv
+  prepare:
+    cmd: python src/prepare.py data/weather.csv data/groundTruth.csv
+    deps:
+    - data/weather.csv
+    - src/prepare.py
+    params:
+    - prepare.seed
+    outs:
+    - data/groundTruth.csv
