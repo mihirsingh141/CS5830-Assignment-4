@@ -17,3 +17,10 @@ stages:
     - prepare.seed
     outs:
     - data/groundTruth.csv
+  process:
+    cmd: python src/process.py data/weather.csv data/predictedTruth.csv
+    deps:
+    - data/weather.csv
+    - src/process.py
+    outs:
+    - data/predictedTruth.csv
