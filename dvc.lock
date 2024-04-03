@@ -9,20 +9,20 @@ stages:
       size: 684
     params:
       params.yaml:
-        download.n_loc: 99999913724
+        download.n_loc: 99999904125
         download.year: 2023
     outs:
     - path: data/weather.csv
       hash: md5
-      md5: 942c66d98b58a5e9333c62f84427c5cd
-      size: 322119
+      md5: 5b4a100882cbc4d896def201ad59a3f4
+      size: 48051642
   prepare:
     cmd: python src/prepare.py data/weather.csv data/groundTruth.csv
     deps:
     - path: data/weather.csv
       hash: md5
-      md5: 942c66d98b58a5e9333c62f84427c5cd
-      size: 322119
+      md5: 5b4a100882cbc4d896def201ad59a3f4
+      size: 48051642
     - path: src/prepare.py
       hash: md5
       md5: ccaa4ec42f489bd3263088e374e9cdfd
@@ -33,15 +33,15 @@ stages:
     outs:
     - path: data/groundTruth.csv
       hash: md5
-      md5: ec15a860061732d669a0052ae27b2588
-      size: 74
+      md5: 67bd2d145f65f2fd54fbd6a180972b40
+      size: 81
   process:
     cmd: python src/process.py data/weather.csv data/predictedTruth.csv
     deps:
     - path: data/weather.csv
       hash: md5
-      md5: 942c66d98b58a5e9333c62f84427c5cd
-      size: 322119
+      md5: 5b4a100882cbc4d896def201ad59a3f4
+      size: 48051642
     - path: src/process.py
       hash: md5
       md5: b439749e4c33b0669b8722fd2dcd6624
@@ -49,19 +49,19 @@ stages:
     outs:
     - path: data/predictedTruth.csv
       hash: md5
-      md5: c009a23262360d890b9ffa1a0cf5f70c
-      size: 243
+      md5: db8ff6be8d182e942433630b6d65ac5e
+      size: 244
   evaluate:
     cmd: python src/evaluate.py data/groundTruth.csv data/predictedTruth.csv
     deps:
     - path: data/groundTruth.csv
       hash: md5
-      md5: ec15a860061732d669a0052ae27b2588
-      size: 74
+      md5: 67bd2d145f65f2fd54fbd6a180972b40
+      size: 81
     - path: data/predictedTruth.csv
       hash: md5
-      md5: c009a23262360d890b9ffa1a0cf5f70c
-      size: 243
+      md5: db8ff6be8d182e942433630b6d65ac5e
+      size: 244
     - path: src/evaluate.py
       hash: md5
       md5: 08264c54cd053ae7f5b2c953a4757f31
@@ -69,9 +69,9 @@ stages:
     outs:
     - path: data/R2_score.txt
       hash: md5
-      md5: abe479baf7860861f2cb687d82baf879
+      md5: 98206aef999ba62bf5b532cd736c4cd9
       size: 19
     - path: data/metrics.json
       hash: md5
-      md5: e8f48bc0f112e391d061d6867e05926a
+      md5: af2a293341e199a7b385f5817b05dca2
       size: 32

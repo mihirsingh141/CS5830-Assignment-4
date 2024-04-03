@@ -1,0 +1,5 @@
+/weather.csv
+/groundTruth.csv
+/predictedTruth.csv
+/R2_score.txt
+/metrics.json
